@@ -11,11 +11,11 @@ int& f(Vector3i v){return f(v.x,v.y,v.z);}
 
 bool isOpen(int x,int y,int z)
 {
-  for(int i=-1;i<=1;i++)
+  for(int i=-1;i<=1;i++) //блокирует фигуры серым цветом
    for(int j=-1;j<=1;j++)
     if (f(x+2,y+i,z)>0 && f(x-2,y+j,z)>0) return 0;
 
-  for(int i=-1;i<=1;i++)
+  for(int i=-1;i<=1;i++) //исчезновение фигур
    for(int j=-1;j<=1;j++)
     if ( f(x+i,y+j,z+1)>0 ) return 0;
 
@@ -27,9 +27,9 @@ int main()
 {
     srand(time(0));
 
-    RenderWindow app(VideoMode(740, 570), "Mahjong Solitaire!");
+    RenderWindow app(VideoMode(740, 570), "Mahjong Solitaire!");//размер окна
 
-    Texture t1,t2;
+    Texture t1,t2;//подключение текстур
     t1.loadFromFile("files/tiles.png");
     t2.loadFromFile("files/background.png");
     Sprite s(t1), sBackground(t2);
@@ -40,7 +40,7 @@ int main()
     std::vector<Vector3i> moves;
 
 
-    ////load from file////
+    //загрузка файла карты 
     std::fstream myfile("files/map.txt");
     for(int y=0;y<18;y++)
      for(int x=0;x<30;x++)
@@ -52,7 +52,7 @@ int main()
           else f(x,y,z)=1;
       }
 
-    ////create map//////
+   //создание карты
     for(int k=1;;k++)
     {
      std::vector<Vector3i> opens;
@@ -70,7 +70,7 @@ int main()
      k%=42;
     }
 
-    for(int z=0;z<10;z++)
+    for(int z=0;z<10;z++) //создание плиток
      for(int y=0;y<18;y++)
       for(int x=0;x<30;x++) f(x,y,z)*=-1;
 
@@ -83,7 +83,7 @@ int main()
             if (e.type == Event::Closed)
                 app.close();
 
-            //move back
+            //вернутся к преведущему шагу
             if (e.type == Event::MouseButtonReleased)
                 if (e.key.code == Mouse::Right)
                   {
@@ -93,9 +93,9 @@ int main()
                     f(moves[n-2])*=-1; moves.pop_back();
                   }
 
-               if (e.type == Event::MouseButtonPressed)
+               if (e.type == Event::MouseButtonPressed)//проверка нажатия левой кнопки
                 if (e.key.code == Mouse::Left)
-                  for(int z=0;z<10;z++)
+                  for(int z=0;z<10;z++) //убание одинаковых плиток левой кнопкой мыши
                    {
                      Vector2i pos = Mouse::getPosition(app) - Vector2i(30,0); // 30 - desk offset
                      int x = (pos.x-z*offX)/stepX;
