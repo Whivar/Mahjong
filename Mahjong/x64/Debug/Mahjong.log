@@ -1,0 +1,8 @@
+﻿  main.cpp
+d:\работы\программирование\mahjong\mahjong\main.cpp(28): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+d:\работы\программирование\mahjong\mahjong\main.cpp(38): warning C4305: инициализация: усечение из "double" в "float"
+d:\работы\программирование\mahjong\mahjong\main.cpp(64): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+d:\работы\программирование\mahjong\mahjong\main.cpp(90): warning C4267: инициализация: преобразование из "size_t" в "int"; возможна потеря данных
+d:\работы\программирование\mahjong\mahjong\main.cpp(101): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+d:\работы\программирование\mahjong\mahjong\main.cpp(102): warning C4244: инициализация: преобразование "float" в "int", возможна потеря данных
+  Mahjong.vcxproj -> D:\Работы\Программирование\Mahjong\x64\Debug\Mahjong.exe
